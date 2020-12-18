@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>관심 목록 삭제</title>
+</head>
+<body>
+    <p> {{ interest.hobby }} 분야의 </p>
+    <p> {{ interest.detail }}</p>
+    <p> 에 대한 관심을 정말로삭제하시겠습니까?</p>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <input type="submit" value="삭제하기">
+    </form>
+
+    <a href="{% url 'user_dashboard' %}">돌아가기</a>
+
+</body>
+</html>

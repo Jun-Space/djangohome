@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create</title>
+</head>
+<body>
+    <p>나의 새로운 관심사 등록하기</p>
+
+    <form action='' method="POST">
+        {% csrf_token %}
+        {{ form }}
+
+        <input type="submit" value="등록하기">
+    </form>
+
+    <a href="{% url 'user_dashboard' %}">돌아가기</a>
+</body>
+</html>

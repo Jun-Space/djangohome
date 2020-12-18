@@ -1,0 +1,6 @@
+{% autoescape off %}
+        반갑습니다.
+    {{ user.username }} 님,
+    본인이 맞으시다면 아래 링크를 눌러 가입을 완료하세요!
+http://{{ domain }}{% url 'activate' uidb64=uid token=token %}
+{% endautoescape %}

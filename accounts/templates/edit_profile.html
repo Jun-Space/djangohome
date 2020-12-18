@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>개인 정보 수정</title>
+</head>
+<body>
+    <p>개인 정보</p>
+
+    <form action="" method ="POST">
+        {% csrf_token %}
+        {{ form }}
+
+        <input type="submit" name="submit" value="저장하기">
+    </form>
+
+    <a href="{% url 'user_dashboard' %}">돌아가기</a>
+
+
+</body>
+</html>
