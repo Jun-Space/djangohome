@@ -125,7 +125,11 @@ def edit_profile(request):
 
 @login_required(login_url='login')
 def create_interest(request):  # 여기서 form에서 subscriber는 새로 등록하지 않고 해당 로그인된 사용자로 자동으로 등록하게 하고 싶다
-    form = InterestForm()
+    this_subscriber = request.user.subscriber
+    initial_data = {
+        'subscriber': this_subscriber
+    }
+    form = InterestForm(initial=initial_data)
     if request.method == 'POST':
         form = InterestForm(request.POST)
         if form.is_valid():
