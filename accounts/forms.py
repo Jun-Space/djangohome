@@ -30,5 +30,11 @@ class InterestForm(ModelForm):
     class Meta:
         model = Interest
         fields = '__all__'
-        # exclude = ['subscriber']
+
+
+class InterestSubmissionForm(ModelForm):
+    class Meta:
+        model = Interest
+        fields = '__all__'
+        exclude = ['subscriber']
         # fields = ['hobby', 'detail']

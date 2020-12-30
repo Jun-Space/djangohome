@@ -124,18 +124,20 @@ def edit_profile(request):
 
 
 @login_required(login_url='login')
-def create_interest(request):  # 여기서 form에서 subscriber는 새로 등록하지 않고 해당 로그인된 사용자로 자동으로 등록하게 하고 싶다
+def create_interest(request):
     this_subscriber = request.user.subscriber
-    initial_data = {
-        'subscriber': this_subscriber
-    }
-    form = InterestForm(initial=initial_data)
+    interest_submission_form = InterestSubmissionForm()
     if request.method == 'POST':
-        form = InterestForm(request.POST)
-        if form.is_valid():
-            form.save()
+        interest_submission_form = InterestSubmissionForm(request.POST)
+        if interest_submission_form.is_valid():
+            hobby = interest_submission_form.cleaned_data['hobby']
+            detail = interest_submission_form.cleaned_data['detail']
+            interest = Interest.objects.create(subscriber=this_subscriber,
+                                               hobby=hobby,
+                                               detail=detail)
+            interest.save()
             return redirect('user_dashboard')
-    context = {'form': form}
+    context = {'form': interest_submission_form}
     return render(request, 'create_interest.html', context)
 
 
